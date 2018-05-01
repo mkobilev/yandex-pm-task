@@ -1,3 +1,4 @@
+timestamp	datetime	device	numdoc	region	request	urls
 1520974802	2018-03-14 00:00	desktop	308548261	10367	https://yandex.ru/search/?text=футбол 1 смотреть онлайн	http://see-me.ru/online-tv/football-1.html;http://lion-tv.com/54-futbol-1.html;http://ok-tv.org/channels/61-futbol-1.html
 1520974802	2018-03-14 00:00	touch	89542436	193	https://yandex.ru/search/?text=егор шилов смотреть онлайн	http://www.kinobublik.club/egor-shilov-2017/;http://bighd.net/film/egor_shilov_2016/23-1-0-113;http://www.megosales.com/19897-egor-shilov-2017.html
 1520974806	2018-03-14 00:00	touch	266456354	35	https://yandex.ru/search/?text=смотреть онлайн матч футбол 1 прямая трансляция	http://pokazz.net/405-match-futbol-1.html;http://onlines.tv/match-futbol-1;http://sport24tv.net/channel/91305/

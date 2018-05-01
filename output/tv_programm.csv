@@ -1,3 +1,4 @@
+timestamp	datetime	device	numdoc	region	request	urls
 1520974834	2018-03-14 00:00	touch	62247411	2	https://yandex.ru/search/?text=программа передач&flag=rFqYZ8092	https://tv.mail.ru/sankt_peterburg/;https://tv.yandex.ru/2;http://www.ontvtime.ru/tv
 1520975239	2018-03-14 00:07	touch	295150094	240	https://yandex.ru/search/?text=ваз тв программа передач на сегодня&client=621965	https://tv.mail.ru/toljatti/;http://ladamedia.ru/television/schedule;https://tv.yandex.ru/240
 1520975846	2018-03-14 00:17	touch	211406706	213	https://yandex.ru/search/?text=программа передач на сегодня&client=493157	https://tv.mail.ru/;https://tv.yandex.ru/213;http://www.s-tv.ru/tv/

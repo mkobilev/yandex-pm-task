@@ -1,5 +1,5 @@
 from keras.models import Sequential
-from keras.layers import LSTM, Dense, Activation,Dropout,Embedding
+from keras.layers import LSTM, Dense, Activation, Dropout, Embedding
 import pandas as pd
 import keras.utils
 from keras.preprocessing.text import Tokenizer
@@ -14,10 +14,10 @@ batch_size = 32
 epochs = 3
 
 #считываем из CSV
-df = pd.read_csv('cleaned_dataset.csv',delimiter=';',encoding = "utf-8").astype(str)
-num_classes = len(df['класс'].drop_duplicates())
-X_raw = df['запрос'].values
-Y_raw = df['класс'].values
+df = pd.read_csv('./dataset/cleaned_dataset.csv', delimiter=';', encoding="utf-8").astype(str)
+num_classes = len(df['class'].drop_duplicates())
+X_raw = df['query'].values
+Y_raw = df['class'].values
 
 #трансформируем текст запросов в матрицы
 tokenizer = Tokenizer(num_words=max_words)

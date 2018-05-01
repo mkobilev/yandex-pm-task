@@ -2,44 +2,35 @@
 
 # timestamp datetime device	numdoc region request urls
 
-import csv
-
-import nltk
-from urllib.parse import urlparse, parse_qs
-
-import sys, os
-stderr = sys.stderr
-sys.stderr = open(os.devnull, 'w')
 import pandas as pd
-from nltk.tokenize import wordpunct_tokenize
-from nltk.corpus import stopwords
-nltk.download('stopwords')
-sys.stderr = stderr
-
-#инициализируем стоп слова и символы
-stop = set(stopwords.words('russian'))
-stop.update(['.', ',', '"', "'", '?', '!', ':', ';', '(', ')', '[', ']', '{', '}','#','№'])
-
-def remove_stop_words(query):
-    str = ''
-    for i in wordpunct_tokenize(query):
-        if i not in stop and not i.isdigit():
-            str = str + i + ' '
-    return str
+from urllib.parse import urlparse, parse_qs
+from stop_words_remover import remove_stop_words
 
 
-output = open('./cleaned_dataset.csv', 'w')
-
-def csv_dict_reader(file_obj):
-    reader = csv.DictReader(file_obj, delimiter='\t')
-    output.write('запрос;класс\n')
-    for line in reader:
+def csv_dict_reader(file_obj, classificator):
+    df = pd.read_csv(file_obj, delimiter='\t', encoding="utf-8").astype(str)
+    output = open('./dataset/' + classificator.replace(' ', '_') + '.csv', 'w')
+    for line in df['request'].values:
         try:
-            query = remove_stop_words(parse_qs(urlparse(line['request']).query)['text'][0] ).rstrip().lower()
-            output.write(query + ';просмотр телевидения\n')
+            query = remove_stop_words(parse_qs(urlparse(line).query)['text'][0]).rstrip().lower()
+            output.write(query + ';' + classificator + '\n')
         except: 
             print('no query ¯\_(ツ)_/¯')
+    output.close()
 
 if __name__ == '__main__':
-    with open('./output/tv_dataset.csv') as f_obj:
-        csv_dict_reader(f_obj)
+    main_output = open('./dataset/dataset_header.csv', 'w')
+    main_output.write('query;class\n')
+    main_output.close()
+
+    with open('./output/channel.csv') as channel_obj:
+        csv_dict_reader(channel_obj, 'поиск канала')
+
+    with open('./output/tv_online.csv') as online_obj:
+        csv_dict_reader(online_obj, 'просмотр online')
+
+    with open('./output/tv_serial.csv') as serial_obj:
+        csv_dict_reader(serial_obj, 'сериалы')
+
+    with open('./output/tv_programm.csv') as programm_obj:
+        csv_dict_reader(programm_obj, 'программа передач')

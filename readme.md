@@ -35,6 +35,8 @@ $ cat ../log.csv | grep 'канал' | wc -l
 ```bash
 $ pip install -r requirements.txt
 ```
+mkdir output 
+mkdit dataset
 
 Создаем датасет
 ```bash
@@ -45,6 +47,10 @@ $ cat ../log.csv | grep 'сериал' > output/tv_serial.csv
 $ head -n 1 ../log.csv > output/tv_dataset.csv
 
 $ cat output/tv_programm.csv output/channel.csv output/tv_online.csv output/tv_serial.csv >> output/tv_dataset.csv
+```
+
+```bash
+$ cat dataset/dataset_header.csv dataset/поиск_канала.csv dataset/программа_передач.csv dataset/просмотр_online.csv dataset/сериалы.csv > dataset/cleaned_dataset.csv
 ```
 
   
